@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array [Listen]</title>
+    <script>
+      // Array erstellen
+      // Array start Werte geben
+      // auf console ausgeben
+
+      // alles was in [] steht ist ein Array
+      const liste = [1, 2, 3, 4];
+      console.log(liste);
+
+      //Array mit Wert(en) füllen, asugeben und Element(e) entfernen
+
+      liste.push(5); //mit push fügt man weitere Elemente, an das Ende des Arrays ein
+      console.log(liste);
+      console.log(liste.length);
+      //   liste.pop(); // mit .pop entfernt man das letzte Elemente des Arrays
+      const letzteElement = liste.pop();
+      console.log(letzteElement);
+      console.log(liste);
+
+      console.log(liste[0]); //0 ist immer das erste Element
+      console.log(liste[liste.length - 1]); // gibt das letzte Element aus
+      console.log(liste.length); // Zeigt die länge der Arrays (die Anzahl der Elemente)
+
+      // Array splicen (löschen und einfügen)
+      // Element im Array löschen
+      liste.splice(0, 1); // Die erste Zahl bestimmt ab wo gelöscht wird und die zweite Zahl gibt an wie viele Elemente des Arrays gelöscht werden
+      console.log(liste);
+      // Element im Array hinzufügen
+      liste.splice(0, 0, 99); // erste Zahl= Stelle im Array, zweite Zahl= wie viele Elemente gelöscht werden, dritte Zahl= Element wird hinzugefügt
+      console.log(liste);
+    </script>
+  </head>
+  <body></body>
+</html>
