@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ternary Operator</title>
+    <script>
+      const x = 2;
+      console.log(x);
+
+      //Condition ? True : False
+      // IF Condition ? THEN : ELSE
+
+      if (x < 10) {
+        console.log("X ist kleiner 10");
+      } else {
+        console.log("X ist gleich oder größer 10");
+      }
+
+      /*Der tenäre Operator führt das gleiche wie eine IF Funktion aus, aber
+      in einer anderen Schreibweise, kürzer und simpler, aber nur für simple IF Funktionen 
+      geeignet  */
+
+      x < 10
+        ? console.log("X ist kleiner 10")
+        : console.log("X ist gleich oder größer 10");
+
+      console.log(`X ist ${x < 10 ? "kleiner" : "größer oder gleich"} 10`); // Der Tenäre Operator zusammengefasst
+    </script>
+  </head>
+  <body></body>
+</html>

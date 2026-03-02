@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array 2.0</title>
+    <script>
+      const list = [15, 10, 20, 3, 5, 12];
+      console.log(list);
+
+      // Find (findet einzelne Elemente aus dem Array und gibt diese wieder)
+      const fünfZehn = list.find((zahl) => {
+        return zahl === 15;
+      });
+
+      console.log(fünfZehn);
+
+      // findIndex (findet für uns die Stelle des Elements in dem Array)
+      const fünfZehnIndex = list.findIndex((zahl) => {
+        return zahl === 15;
+      });
+
+      console.log(fünfZehnIndex);
+
+      // Sort (mit Sort kann man das Array sortieren)
+      const sortedArray = list.sort();
+      console.log(sortedArray);
+
+      const sortedArray2 = list.sort((a, b) => {
+        if (a > b) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+
+      console.log(sortedArray2);
+    </script>
+  </head>
+  <body></body>
+</html>

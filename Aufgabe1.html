@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aufgabe 1 Array</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      let content = [5, 6];
+
+      //Array Anzeigen lassen
+      function show() {
+        console.log(content);
+        content.forEach((element) => {
+          console.log(element);
+        });
+      }
+      //Inhalt mit *2 Multiplizieren
+      function multiply() {
+        const newContent = content.map((element) => {
+          return element * 2;
+        });
+        content = newContent;
+        console.log(content);
+      }
+
+      //Summe abbilden können
+      function sum() {
+        const reducedValue = content.reduce((previousValue, currentValue) => {
+          return previousValue + currentValue;
+        });
+        console.log(reducedValue);
+      }
+      // neue Elemente zum Array einfügen
+      function add() {
+        const value = Number(document.getElementById("addValue").value);
+        content.push(value);
+        console.log(content);
+      }
+      //Elemente anhand ihrer Position im Array löschen können
+      function subtractByPosition() {
+        const position = Number(document.getElementById("delete").value);
+        if (position < content.length) {
+          content.splice(position, 1);
+        } else {
+          alert("Die Position muss kleiner sein als " + content.length);
+        }
+        console.log(content);
+      }
+      //Elemente anhand ihres Inahltes im Array löschen können
+      function deleteByContent() {
+        const contents = Number(
+          document.getElementById("deleteByContent").value,
+        );
+        const filteredContent = content.filter((element) => {
+          return element !== contents; // so werden alle Werte wiedergegeben welche
+        });
+        console.log(filteredContent);
+
+        content = filteredContent;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="content">
+        <div class="row">
+          <p>Inhalt einfügen:</p>
+          <input type="number" class="Input" id="addValue" />
+          <button class="buttons" onclick="add()">Einfügen</button>
+        </div>
+        <div class="row">
+          <p>ID Löschen:</p>
+          <input type="number" class="Input" id="delete" />
+          <button class="buttons" onclick="subtractByPosition()">
+            Löschen
+          </button>
+        </div>
+        <div class="row">
+          <p>Content Löschen:</p>
+          <input type="number" class="Input" id="deleteByContent" />
+          <button class="buttons" onclick="deleteByContent()">Löschen</button>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button class="buttons" onclick="show()">Anzeigen</button>
+        <button class="buttons" onclick="multiply()">Multiplizieren</button>
+        <button class="buttons" onclick="sum()">Summe</button>
+      </div>
+    </div>
+  </body>
+</html>
