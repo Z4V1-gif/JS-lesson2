@@ -32,8 +32,57 @@
       liste.splice(0, 1); // Die erste Zahl bestimmt ab wo gelöscht wird und die zweite Zahl gibt an wie viele Elemente des Arrays gelöscht werden
       console.log(liste);
       // Element im Array hinzufügen
-      liste.splice(0, 0, 99); // erste Zahl= Stelle im Array, zweite Zahl= wie viele Elemente gelöscht werden, dritte Zahl= Element wird hinzugefügt
+      liste.splice(1, 0, 99); // erste Zahl= ausgewählte Stelle im Array, zweite Zahl= wie viele Elemente gelöscht werden, dritte Zahl= Element wird hinzugefügt
       console.log(liste);
+
+      // ForEach Methode zeigt jedes Element der "liste" einzeln an und führt die Funktion bei jedem einzelnen Element aus
+      function ausgabe(element) {
+        console.log(element);
+      }
+
+      //Error Funktion
+      (element) => {}; // JS weiß dass dies eine Funktion ist, aber diese Funktion kann man nicht explizit aufrufen
+
+      liste.forEach((element) => {
+        console.log(element);
+      });
+
+      /*mit all diesen Varianten kann man mit einem Array aggieren */
+
+      for (let element of liste) {
+        console.log(element);
+      }
+
+      for (let i = 0; i < liste.length; i++) {
+        console.log(liste[i]);
+      }
+
+      // Filter
+      // mit return geben wir an was er uns wieder geben soll
+      const filteredList = liste.filter((element) => {
+        return element > 5; // so werden nur die Werte größer 5 aus dem Array wieder angegeben und alles kleiner 5 wird rausgefiltered
+      });
+
+      console.log(filteredList);
+
+      // Map = Map funktion geht über das ganze Array und gibt ein neues Array zurück
+      console.log(liste);
+      const mappedListe = liste.map((element) => {
+        console.log(element);
+        return element * 2; /* jedes Element des Arrays wird nun *2 genommen */
+      });
+      console.log(mappedListe);
+
+      const reducedValue = liste.reduce((previousValue, currentValue) => {
+        console.log(previousValue, currentValue);
+        return (
+          previousValue + currentValue
+        ); /*in dem Fall nimmt er das erste Element, addiert es mit dem nächsten, die Summe daraus wird
+        // zum previousValue und das zunächst addierende Element wird zum currentValue, so wird das ganze Array durchgerechnet und gibt am
+        Ende eine Summe aus den Werten des Arrays */
+      });
+
+      console.log(reducedValue);
     </script>
   </head>
   <body></body>
