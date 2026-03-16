@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aufgabe 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      const studentList = [];
+
+      const score = {
+        german: 0,
+        english: 0,
+        math: 0,
+      };
+
+      const student = {
+        firstName: "",
+        lastName: "",
+        age: 0,
+        grades: { score },
+      };
+
+      // console.log(student);
+      //Vorname eintrage
+      function addFirstName() {
+        const inputFeld = document.getElementById("firstNameInput");
+        student.firstName = inputFeld.value;
+        // console.log("aktueller Student:", student);
+      }
+      //Nachname eintragen
+      function addLastName() {
+        const inputFeld = document.getElementById("lastNameInput");
+        student.lastName = inputFeld.value;
+        // console.log("aktueller Studentenname", student);
+      }
+      //Alter als Zahl eingeben
+      function addAge() {
+        const inputFeld = document.getElementById("ageInput");
+        student.age = Number(inputFeld.value);
+        // console.log(student);
+      }
+      //Klasse wählen zwischen 1-4
+      function addClass() {
+        const selectFeld = document.getElementById("classSelect");
+        student.class = selectFeld.value;
+        // console.log(student);
+      }
+      //Die Noten für Englisch, Deutsch und Mathe eintragen
+      function addGradeGerman() {
+        const inputFeld = document.getElementById("germanInput");
+        score.german = inputFeld.value;
+        // console.log(student);
+      }
+
+      function addGradeEnglish() {
+        const inputFeld = document.getElementById("englishInput");
+        score.english = inputFeld.value;
+        // console.log(student);
+      }
+
+      function addGradeMath() {
+        const inputFeld = document.getElementById("mathInput");
+        score.math = inputFeld.value;
+        // console.log(score);
+      }
+      //Den Schüler erstellen (button)
+      function createStudent() {
+        student.firstName = document.getElementById("firstNameInput").value;
+        student.lastName = document.getElementById("lastNameInput").value;
+        student.age = document.getElementById("ageInput").value;
+        score.german = document.getElementById("germanInput").value;
+        score.english = document.getElementById("englishInput").value;
+        score.math = document.getElementById("mathInput").value;
+
+        studentList.push({ ...student, grades: { ...score } });
+
+        student.firstName = document.getElementById("firstNameInput").value =
+          "";
+        student.lastName = document.getElementById("lastNameInput").value = "";
+        student.age = document.getElementById("ageInput").value = "";
+        score.german = document.getElementById("germanInput").value = "";
+        score.english = document.getElementById("englishInput").value = "";
+        score.math = document.getElementById("mathInput").value = "";
+        // console.log(studentList);
+      }
+      //Anzeigen lassen (console)
+      function showStudentList() {
+        console.log(studentList);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Schüler einpflegen</h1>
+    <div class="full-wrapper">
+      <div class="wrapper">
+        <div class="names">
+          Vorname:<input
+            type="text"
+            id="firstNameInput"
+            onchange="addFirstName()"
+          />
+        </div>
+        <div class="names">
+          Nachname:<input
+            type="text"
+            id="lastNameInput"
+            onchange="addLastName()"
+          />
+        </div>
+        <div class="age">
+          Alter: <input type="number" id="ageInput" onchange="addAge()" />
+        </div>
+        <div class="class">
+          Klasse:
+          <select class="classes" id="classSelect" onchange="addClass()">
+            <option>1.</option>
+            <option>2.</option>
+            <option>3.</option>
+            <option>4.</option>
+          </select>
+        </div>
+        <div class="subjects">
+          Deutsch:
+          <input type="number" id="germanInput" onchange="addGradeGerman()" />
+        </div>
+        <div class="subjects">
+          Englisch:
+          <input type="number" id="englishInput" onchange="addGradeEnglish()" />
+        </div>
+        <div class="subjects">
+          Mathe:
+          <input type="number" id="mathInput" onchange="addGradeMath()" />
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="add" id="create" onclick="createStudent()">
+          Erstellen
+        </button>
+        <button class="show" onclick="showStudentList()">Anzeigen</button>
+      </div>
+    </div>
+  </body>
+</html>
