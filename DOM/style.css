@@ -1,0 +1,19 @@
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 0px 24px;
+  border-radius: 8px;
+  padding: 1rem;
+  width: fit-content;
+  gap: 1rem;
+}
+
+.card-body > img {
+  max-width: 15rem;
+}
+
+img {
+  overflow: clip;
+  overflow-clip-margin: content-box;
+}
