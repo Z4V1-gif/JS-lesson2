@@ -5,6 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM Card</title>
     <link rel="stylesheet" href="style.css" />
+    <script>
+      const randomImages = [
+        "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg",
+        "https://cdn.pixabay.com/photo/2020/05/17/23/09/foal-5183837_1280.jpg",
+        "https://cdn.pixabay.com/photo/2023/12/08/23/46/cat-8438334_1280.jpg",
+        "https://cdn.pixabay.com/photo/2024/11/04/21/39/kingfisher-9174586_1280.jpg",
+      ];
+      function like() {
+        alert("succesfully liked the picture");
+      }
+
+      function dislike() {
+        alert("succesfully disliked the picture");
+      }
+
+      // Element erstellen : (Card,Header, Body, Footer, Like, Dislike)
+      // Klassen setzen (card, card-header, card-body)
+      // Img setzen
+      // Text erzeugen (Title, Like, Dislike)#
+      // Text an Element anfügen
+      // Element aneinander fügen
+      // Wrapper Elemente append Child
+
+      function addNewByString() {
+        //Rnd Image
+        Math.random();
+        // console.log(Math.random() * randomImages.length); // Gibt einen zufälligen Wert zwischen 0 und 3,99 aus
+        const randomImage =
+          randomImages[Math.floor(Math.random() * randomImages.length)]; // mit floor werden nur ganze Zahlen ausgegeben
+        console.log(randomImage);
+        // String setzen (mit ${}-Notation)
+        const htmlString = ` <div class="card">
+            <div class="card-header"><h1>Title of Card</h1></div>
+            <div class="card-body">
+                <img
+                src="${randomImage}"
+                alt="Boxing Gloves"
+                />
+            </div>
+            <div class="card-footer">
+                <button
+                onclick="
+                    like(
+                    '${randomImage}',
+                    )
+                "
+                >
+                Like
+                </button>
+                <button
+                onclick="
+                    dislike(
+                    '${randomImage}',
+                    )
+                "
+                >
+                Dislike
+                </button>
+            </div>
+            </div>`;
+        console.log(htmlString);
+        document.getElementById("wrapper").innerHTML = htmlString; //so setzt man in das leere div nun die Duplikation
+      }
+    </script>
   </head>
   <body>
     <div class="card">
@@ -38,5 +102,6 @@
     </div>
     <button onclick="addNewByString()">Add by String</button>
     <button onclick="addNew()">Add New</button>
+    <div id="wrapper"></div>
   </body>
 </html>
