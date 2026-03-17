@@ -18,6 +18,7 @@
         firstName: "",
         lastName: "",
         age: 0,
+        schoolClass: 1,
         grades: { score },
       };
 
@@ -69,9 +70,22 @@
         student.firstName = document.getElementById("firstNameInput").value;
         student.lastName = document.getElementById("lastNameInput").value;
         student.age = document.getElementById("ageInput").value;
+        student.schoolClass = document.getElementById("classSelect").value;
         score.german = document.getElementById("germanInput").value;
         score.english = document.getElementById("englishInput").value;
         score.math = document.getElementById("mathInput").value;
+
+        // const student = {
+        //   firstName: firstName,
+        //   lastName: lastName,
+        //   age: age,
+        //   schoolClass: schoolCLass,
+        //   score: {
+        //     german: 0,
+        //     english: 0,
+        //     math: 0,
+        //   },
+        // };
 
         studentList.push({ ...student, grades: { ...score } });
 
