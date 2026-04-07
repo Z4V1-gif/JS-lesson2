@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Element Löschen
+      function deleteElement(id) {
+        document.getElementById(id).remove();
+      }
+    </script>
+  </head>
+  <body>
+    <div id="1">Hallo</div>
+    <button onclick="deleteElement('1')">Remove</button>
+  </body>
+</html>
