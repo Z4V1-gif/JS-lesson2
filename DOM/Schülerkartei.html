@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schülerkartei</title>
+    <link rel="stylesheet" href="styleStudent.css" />
+    <script>
+      const firstNames = ["Peter", "Markus", "Franz", "Karl"];
+      const lastNames = ["Müller", "Meier", "Schmidt", "Mustermann"];
+      const ages = ["7", "9", "10", "39"];
+
+      function addNewStudent() {
+        const cardIndex = document.createElement("div");
+        cardIndex.classList.add("Index");
+
+        const randomFirstName =
+          firstNames[Math.floor(Math.random() * firstNames.length)];
+        const firstName = document.createElement("div");
+        const first = document.createTextNode(
+          "Vorname:" + " " + randomFirstName,
+        );
+        firstName.appendChild(first);
+        firstName.classList.add("fname");
+
+        const randomLastName =
+          lastNames[Math.floor(Math.random() * lastNames.length)];
+        const lastName = document.createElement("div");
+        const last = document.createTextNode(
+          "Nachname:" + " " + randomLastName,
+        );
+        lastName.appendChild(last);
+        lastName.classList.add("lname");
+
+        const randomAge = ages[Math.floor(Math.random() * ages.length)];
+        const age = document.createElement("div");
+        const oldAge = document.createTextNode("Alter:" + " " + randomAge);
+        age.appendChild(oldAge);
+        age.classList.add("ageNumber");
+
+        cardIndex.appendChild(firstName);
+        cardIndex.appendChild(lastName);
+        cardIndex.appendChild(age);
+
+        document.getElementById("wrapper").appendChild(cardIndex);
+        console.log(cardIndex);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="addNewStudent()">ADD</button>
+    <div id="wrapper"></div>
+  </body>
+</html>
