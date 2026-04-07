@@ -20,13 +20,58 @@
         alert("succesfully disliked the picture");
       }
 
-      // Element erstellen : (Card,Header, Body, Footer, Like, Dislike)
-      // Klassen setzen (card, card-header, card-body)
-      // Img setzen
-      // Text erzeugen (Title, Like, Dislike)#
-      // Text an Element anfügen
-      // Element aneinander fügen
-      // Wrapper Elemente append Child
+      function addNew() {
+        // Element erstellen : (Card,Header, Body, Footer, Like, Dislike)
+        // Klassen setzen (card, card-header, card-body)
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        const header = document.createElement("div");
+        const title = document.createTextNode("Titel of Card");
+        // Text an Element anfügen
+        header.appendChild(title);
+        header.classList.add("card-header");
+
+        const body = document.createElement("div");
+        body.classList.add("card-body");
+
+        const footer = document.createElement("div");
+        footer.classList.add("card-footer");
+
+        // Text erzeugen (Title, Like, Dislike)#
+        const likeButton = document.createElement("button");
+        likeButton.setAttribute("onclick", `like('${randomImages}')`);
+        const likeText = document.createTextNode("Like");
+        // Text an Element anfügen
+        likeButton.appendChild(likeText);
+        const dislikeButton = document.createElement("button");
+        dislikeButton.setAttribute("onclick", `dislike('${randomImages}')`);
+        const dislikeText = document.createTextNode("Dislike");
+        // Text an Element anfügen
+        dislikeButton.appendChild(dislikeText);
+
+        // Img setzen
+        const randomImage =
+          randomImages[Math.floor(Math.random() * randomImages.length)];
+        const img = document.createElement("img");
+        img.src = randomImage;
+
+        footer.appendChild(likeButton);
+        footer.appendChild(dislikeButton);
+
+        body.appendChild(img);
+
+        card.appendChild(header);
+        card.appendChild(body);
+        card.appendChild(footer);
+
+        document.getElementById("wrapper").appendChild(card);
+
+        console.log(card);
+
+        // Element aneinander fügen
+        // Wrapper Elemente append Child
+      }
 
       function addNewByString() {
         //Rnd Image
