@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // TODO 7: Event Listener
+      document.addEventListener("DOMContentLoaded", loadNamesFromLocalstorage);
+
+      // TODO 1: Array erzeugen
+      let names = [];
+
+      // TODO 6: Localstorage Item holen und in Array einfügen
+      function loadNamesFromLocalstorage() {
+        console.log(names);
+        names = JSON.parse(localStorage.getItem("names")); //JSON.parse wandelt den String wieder
+        //  in das Array format zurück
+        console.log(names);
+      }
+
+      // TODO 4: Localstorage Items setzen
+      function saveNamesToLocalstorage() {
+        console.log(JSON.stringify(names));
+        localStorage.setItem("names", JSON.stringify(names)); //!wichtig! key("names")- value(stringify, names)
+        //  so wird das Array in ein JSON(string) umgewandelt
+        // setItem überschreibt immer wieder den Wert
+      }
+
+      // TODO 5: Array und Localstorage zurücksetzen
+      function deleteNames() {
+        names = []; // leert das Array
+        localStorage.removeItem("names"); // leert den local Storage(key=names) von den
+        //  ausgewählten Attributen(key)
+      }
+
+      // TODO 2: Namen hinzufügen zu Array
+      function addName() {
+        names.push(document.getElementById("addName").value);
+        console.log(names);
+      }
+
+      // TODO 3: Namen aus Array löschen
+      function deleteName() {
+        console.log(names);
+        const nameInput = document.getElementById("deleteName").value;
+
+        names = names.filter((name) => {
+          return name !== nameInput;
+        });
+        console.log(names);
+      }
+    </script>
+  </head>
+
+  <body>
+    <input id="addName" type="text" />
+    <button onclick="addName()">Add</button><br />
+    <input id="deleteName" type="text" />
+    <button onclick="deleteName()">Delete</button><br />
+    <button onclick="loadNamesFromLocalstorage()">Load</button>
+    <button onclick="saveNamesToLocalstorage()">Save</button>
+    <button onclick="deleteNames()">Delete All</button>
+  </body>
+</html>
