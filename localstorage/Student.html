@@ -24,60 +24,75 @@
         const studentsFromStorage = JSON.parse(
           localStorage.getItem("students"),
         );
+
         if (studentsFromStorage !== null) {
           students = studentsFromStorage;
+
+          // Jeden gespeicherten Schüler durch die Helfer-Funktion jagen
+          students.forEach(function (student) {
+            createStudentHTML(student);
+          });
         }
       }
 
-      function addNewStudent() {
+      //HTML Baukasten Funktion
+
+      function createStudentHTML(studentData) {
+        // 1. Hauptkarte
         const cardIndex = document.createElement("div");
         cardIndex.classList.add("Index");
+        cardIndex.id = studentData.id;
 
-        const randomFirstName =
-          firstNames[Math.floor(Math.random() * firstNames.length)];
+        // 2. Inhalte
         const firstName = document.createElement("div");
-        const first = document.createTextNode(
-          "Vorname:" + " " + randomFirstName,
-        );
-        firstName.appendChild(first);
+        firstName.textContent = "Vorname: " + studentData.vornamen;
         firstName.classList.add("fname");
 
-        const randomLastName =
-          lastNames[Math.floor(Math.random() * lastNames.length)];
         const lastName = document.createElement("div");
-        const last = document.createTextNode(
-          "Nachname:" + " " + randomLastName,
-        );
-        lastName.appendChild(last);
+        lastName.textContent = "Nachname: " + studentData.nachnamen;
         lastName.classList.add("lname");
 
-        const randomAge = ages[Math.floor(Math.random() * ages.length)];
         const age = document.createElement("div");
-        const oldAge = document.createTextNode("Alter:" + " " + randomAge);
-        age.appendChild(oldAge);
+        age.textContent = "Alter: " + studentData.alter;
         age.classList.add("ageNumber");
 
-        //Button erstellen und funktion geben
+        // 3. Lösch-Button
         const newButton = document.createElement("button");
         newButton.classList.add("deleteButton");
         newButton.textContent = "Löschen";
 
         newButton.onclick = function () {
           cardIndex.remove();
-
-          const index = students.findIndex(function (student) {
-            return student.id === uniqueId;
-          });
+          // Löschen über die ID des übergebenen Schülers
+          const index = students.findIndex((s) => s.id === studentData.id);
           if (index > -1) {
             students.splice(index, 1);
             saveToLocalstorage();
           }
         };
 
-        //Einmalige ID generien (jetzt, in Millisekunden)
+        // 4. Zusammenbauen
+        cardIndex.appendChild(firstName);
+        cardIndex.appendChild(lastName);
+        cardIndex.appendChild(age);
+        cardIndex.appendChild(newButton);
+
+        document.getElementById("wrapper").appendChild(cardIndex);
+      }
+
+      // angepasste NewStudent funktion mit implementierter HTML Baukasten Funktion
+
+      function addNewStudent() {
         const uniqueId = Date.now();
 
-        // variable students erstellen und an Array senden (push)
+        // Zufallswerte ermitteln
+        const randomFirstName =
+          firstNames[Math.floor(Math.random() * firstNames.length)];
+        const randomLastName =
+          lastNames[Math.floor(Math.random() * lastNames.length)];
+        const randomAge = ages[Math.floor(Math.random() * ages.length)];
+
+        // Datenpaket schnüren
         const newStudentData = {
           id: uniqueId,
           vornamen: randomFirstName,
@@ -85,16 +100,12 @@
           alter: randomAge,
         };
 
+        // Speichern
         students.push(newStudentData);
         saveToLocalstorage();
 
-        cardIndex.appendChild(firstName);
-        cardIndex.appendChild(lastName);
-        cardIndex.appendChild(age);
-        cardIndex.appendChild(newButton);
-
-        document.getElementById("wrapper").appendChild(cardIndex);
-        console.log(cardIndex);
+        // BÄM! HTML bauen lassen:
+        createStudentHTML(newStudentData);
       }
     </script>
   </head>
