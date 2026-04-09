@@ -4,11 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Schülerkartei</title>
-    <link rel="stylesheet" href="styleStudent.css" />
+    <link rel="stylesheet" href="student.css" />
     <script>
       const firstNames = ["Peter", "Markus", "Franz", "Karl"];
       const lastNames = ["Müller", "Meier", "Schmidt", "Mustermann"];
       const ages = ["7", "9", "10", "39"];
+
+      // neues Array mit Studentdaten erstellen
+      let students = [];
+
+      document.addEventListener("DOMContentLoaded", loadFromLocalstorage);
+
+      // students im Localstorage abspeichern
+      function saveToLocalstorage() {
+        localStorage.setItem("students", JSON.stringify(students));
+      }
+      // Laden aus dem Localstorage
+      function loadFromLocalstorage() {
+        const studentsFromStorage = JSON.parse(
+          localStorage.getItem("students"),
+        );
+        if (studentsFromStorage !== null) {
+          students = studentsFromStorage;
+        }
+      }
 
       function addNewStudent() {
         const cardIndex = document.createElement("div");
@@ -38,19 +57,44 @@
         age.appendChild(oldAge);
         age.classList.add("ageNumber");
 
+        //Button erstellen und funktion geben
+        const newButton = document.createElement("button");
+        newButton.classList.add("deleteButton");
+        newButton.textContent = "Löschen";
+
+        newButton.onclick = function () {
+          cardIndex.remove();
+
+          const index = students.findIndex(function (student) {
+            return student.id === uniqueId;
+          });
+          if (index > -1) {
+            students.splice(index, 1);
+            saveToLocalstorage();
+          }
+        };
+
+        //Einmalige ID generien (jetzt, in Millisekunden)
+        const uniqueId = Date.now();
+
+        // variable students erstellen und an Array senden (push)
+        const newStudentData = {
+          id: uniqueId,
+          vornamen: randomFirstName,
+          nachnamen: randomLastName,
+          alter: randomAge,
+        };
+
+        students.push(newStudentData);
+        saveToLocalstorage();
+
         cardIndex.appendChild(firstName);
         cardIndex.appendChild(lastName);
         cardIndex.appendChild(age);
+        cardIndex.appendChild(newButton);
 
         document.getElementById("wrapper").appendChild(cardIndex);
         console.log(cardIndex);
-
-        // const student = {
-        //   firstName : randomFirstName,
-        //   last Name : randomLastName,
-        //   age : randomAge
-
-        // };
       }
     </script>
   </head>
