@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="quiz.css" />
+    <script src="quiz.js" defer></script>
+  </head>
+  <body>
+    <div class="show-question">
+      <div class="wrapper">
+        <header class="question" id="question-text">
+          Was ist die Hauptstadt von Deutschland
+        </header>
+        <div class="grid">
+          <button class="answers" id="answer1" onclick="questionCheck(this)">
+            Berlin
+          </button>
+          <button class="answers" id="answer2" onclick="questionCheck(this)">
+            Hamburg
+          </button>
+          <button class="answers" id="answer3" onclick="questionCheck(this)">
+            München
+          </button>
+          <button class="answers" id="answer4" onclick="questionCheck(this)">
+            Frankfurt
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer class="buttons">
+      <button class="funktion">Lösung</button>
+      <button class="funktion" onclick="nextQuestion()">Weiter</button>
+    </footer>
+  </body>
+</html>
